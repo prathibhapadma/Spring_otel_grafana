@@ -11,11 +11,11 @@ receivers:
 
 exporters:
   otlp:
-    push_config:
-    endpoint: "13.67.226.140:4317"
-    basic_auth:
-      username: dockeradmin
-      password: dockeradmin@1234      
+    #push_config:
+    endpoint: "localhost:4317"
+    #basic_auth:
+     # username: dockeradmin
+      #password: dockeradmin@1234      
               #    endpoint: "13.67.226.140:4317"
     insecure: true
   logging:
