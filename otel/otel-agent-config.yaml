@@ -1,0 +1,36 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+  opencensus:
+  jaeger:
+    protocols:
+      grpc:
+      thrift_http:
+  zipkin:
+
+exporters:
+  otlp:
+    push_config:
+    endpoint: "13.67.226.140:4317"
+    basic_auth:
+      username: dockeradmin
+      password: dockeradmin@1234      
+              #    endpoint: "13.67.226.140:4317"
+    insecure: true
+  logging:
+    loglevel: debug
+
+processors:
+  batch:
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp, zipkin, jaeger]
+      processors: [batch]
+      exporters: [otlp]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp]
