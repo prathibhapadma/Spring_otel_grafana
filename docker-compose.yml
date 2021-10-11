@@ -68,17 +68,17 @@ services:
       - testapp-nw
 
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:latest
     ports:
-      - '3000:3000'
+      - "3000:3000"
     container_name: grafana
-    restart: always
+    #restart: always
     networks:
-      -testapp-nw
-    depends_on:
-      - prometheus
-    volumes:
-      - ./otel/grafana/config/grafana.ini:/etc/grafana/grafana.ini
+      - testapp-nw
+        #depends_on:
+        #- prometheus
+        #volumes:
+        #- ./otel/grafana/config/grafana.ini:/etc/grafana/grafana.ini
 
 
 networks:
